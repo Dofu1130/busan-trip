@@ -1,0 +1,2 @@
+# Allow Jekyll to serve filenames/folders starting with underscores etc.
+# Empty file just tells GitHub Pages: skip Jekyll processing, serve as-is.

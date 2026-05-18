@@ -1,0 +1,254 @@
+/* ==========================================================================
+   KKday Design System — Tokens
+   Source: KKdayDesignSystem-Android (design_tokens.xml / StyleDictionary.kt)
+   + KKdayDesignSystem-iOS (KKDesignTokens.swift), generated 2024-11-14
+   ========================================================================== */
+
+@font-face {
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: local("Noto Sans TC"),
+       url("https://fonts.gstatic.com/s/notosanstc/v35/-nFuOG829Oofr2wohFbTp9iFOSsLA_ZJ1g.woff2") format("woff2");
+}
+
+:root {
+  /* ---------- TYPE ------------------------------------------------------ */
+  --kk-font-family: "Noto Sans TC", "PingFang TC", "Hiragino Sans GB",
+                    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                    "Helvetica Neue", Arial, "Microsoft JhengHei", sans-serif;
+
+  /* Weights (styles pinned — Figma 600 → use Bold 700) */
+  --kk-fw-light: 300;
+  --kk-fw-regular: 400;
+  --kk-fw-medium: 500;
+  --kk-fw-medium-android: 600;
+  --kk-fw-bold: 700;
+
+  /* Raw font sizes */
+  --kk-font-size-1: 12px;
+  --kk-font-size-2: 14px;
+  --kk-font-size-3: 16px;
+  --kk-font-size-4: 18px;
+  --kk-font-size-5: 22px;
+  --kk-font-size-6: 24px;
+  --kk-font-size-7: 26px;
+  --kk-font-size-8: 28px;
+  --kk-font-size-9: 32px;
+
+  /* Semantic type styles — size / line-height / weight */
+  --kk-h4-size: 24px;   --kk-h4-lh: 30px;   --kk-h4-weight: 700;
+  --kk-h5-size: 22px;   --kk-h5-lh: 28px;   --kk-h5-weight: 700;
+  --kk-h6-size: 18px;   --kk-h6-lh: 26px;   --kk-h6-weight: 700;
+  --kk-subtitle-lg-size: 16px; --kk-subtitle-lg-lh: 24px; --kk-subtitle-lg-weight: 700;
+  --kk-subtitle-md-size: 14px; --kk-subtitle-md-lh: 20px; --kk-subtitle-md-weight: 500;
+  --kk-subtitle-sm-size: 12px; --kk-subtitle-sm-lh: 16px; --kk-subtitle-sm-weight: 500;
+  --kk-body-lg-size: 16px;     --kk-body-lg-lh: 24px;     --kk-body-lg-weight: 400;
+  --kk-body-md-size: 14px;     --kk-body-md-lh: 20px;     --kk-body-md-weight: 400;
+  --kk-body-sm-size: 12px;     --kk-body-sm-lh: 16px;     --kk-body-sm-weight: 400;
+  --kk-category-size: 12px;    --kk-category-lh: 16px;    --kk-category-weight: 400;
+
+  /* Price styles — tight line-height for inline price composition */
+  --kk-price-bold-xxl-size: 22px; --kk-price-bold-xxl-lh: 22px;
+  --kk-price-bold-xl-size: 18px;  --kk-price-bold-xl-lh: 18px;
+  --kk-price-bold-lg-size: 16px;  --kk-price-bold-lg-lh: 16px;
+  --kk-price-bold-md-size: 14px;  --kk-price-bold-md-lh: 14px;
+  --kk-price-medium-lg-size: 16px;
+  --kk-price-regular-md-size: 14px;
+  --kk-price-regular-sm-size: 12px;
+
+  /* ---------- CORE NEUTRALS -------------------------------------------- */
+  --kk-color-white: #ffffff;
+  --kk-color-black: #000000;
+
+  /* Text neutral ramp (fg) */
+  --kk-text-lighter: #d5d6db;
+  --kk-text-light:   #babbbe;
+  --kk-text-medium:  #9c9da0;
+  --kk-text-dark:    #727272;
+  --kk-text-darker:  #212121;
+
+  /* ---------- BRAND (PRIMARY — KKday Teal) ----------------------------- */
+  --kk-primary-button:  #1ab6c1;  /* canonical brand button color */
+  --kk-primary-lighter: #f0fafb;
+  --kk-primary-light:   #cef0f3;
+  --kk-primary-medium:  #26bec9;
+  --kk-primary-dark:    #13a3b6;
+  --kk-primary-darker:  #03748a;
+
+  /* Text-primary uses the same ramp */
+  --kk-text-primary-lighter: #cef0f3;
+  --kk-text-primary-light:   #ade6eb;
+  --kk-text-primary-medium:  #26bec9;
+  --kk-text-primary-dark:    #13a3b6;
+  --kk-text-primary-darker:  #068b9f;
+
+  /* ---------- SEMANTIC: CRITICAL (red-coral) --------------------------- */
+  --kk-critical-lighter: #fff2f2;
+  --kk-critical-light:   #fac2c0;
+  --kk-critical-medium:  #ef7a70;
+  --kk-critical-dark:    #e65f50;
+  --kk-critical-darker:  #d14330;
+
+  /* ---------- SEMANTIC: INFO (blue) ------------------------------------ */
+  --kk-info-lighter: #f2faff;
+  --kk-info-light:   #b9e0fa;
+  --kk-info-medium:  #64b3f4;
+  --kk-info-dark:    #2d84d6;
+  --kk-info-darker:  #1565c0;
+
+  /* ---------- SEMANTIC: WARNING (amber) -------------------------------- */
+  --kk-warning-lighter: #fffee0;
+  --kk-warning-light:   #fffbc3;
+  --kk-warning-medium:  #fee269;
+  --kk-warning-dark:    #f5b53d;
+  --kk-warning-darker:  #e78f37;
+
+  /* ---------- SEMANTIC: HIGHLIGHT (gold — prices, deals) --------------- */
+  --kk-highlight-lighter: #fff8e1;
+  --kk-highlight-light:   #ffca28;
+  --kk-highlight-medium:  #ffb400;
+  --kk-highlight-dark:    #ffa000;
+  --kk-highlight-darker:  #ff8f00;
+
+  /* ---------- BACKGROUND SURFACES (cool greys) ------------------------- */
+  --kk-surface-lighter: #f7fafc;
+  --kk-surface-light:   #f1f4f8;
+  --kk-surface-medium:  #e6e9ed;
+  --kk-surface-dark:    #d5d6db;
+  --kk-surface-darker:  #9c9da0;
+
+  /* ---------- BORDERS --------------------------------------------------- */
+  --kk-border-lighter: #e6e9ed;
+  --kk-border-light:   #d5d6db;
+  --kk-border-medium:  #babbbe;
+  --kk-border-dark:    #727272;
+  --kk-border-darker:  #212121;
+
+  /* ---------- LOYALTY TIERS -------------------------------------------- */
+  --kk-loyalty-silver-darker: #003a73;
+  --kk-loyalty-silver-dark:   #005bb5;
+  --kk-loyalty-silver-medium: #0080ff;
+  --kk-loyalty-silver-light:  #2e97ff;
+  --kk-loyalty-silver-bg:     #f3f8ff;
+
+  --kk-loyalty-gold-darker: #5c4000;
+  --kk-loyalty-gold-dark:   #745200;
+  --kk-loyalty-gold-medium: #ad7a00;
+  --kk-loyalty-gold-light:  #d5a32e;
+  --kk-loyalty-gold-bg:     #faf6ed;
+
+  --kk-loyalty-platinum-darker: #3d2373;
+  --kk-loyalty-platinum-dark:   #4e2c91;
+  --kk-loyalty-platinum-medium: #7441d9;
+  --kk-loyalty-platinum-light:  #9d6dff;
+  --kk-loyalty-platinum-bg:     #f6f2ff;
+
+  --kk-loyalty-diamond-darker: #1e2837;
+  --kk-loyalty-diamond-dark:   #2f3e57;
+  --kk-loyalty-diamond-medium: #384b68;
+  --kk-loyalty-diamond-light:  #647692;
+  --kk-loyalty-diamond-bg:     #edf0f5;
+
+  /* ---------- SOCIAL ---------------------------------------------------- */
+  --kk-social-line:       #06c755;
+  --kk-social-kakao:      #fee500;
+  --kk-social-facebook:   #1877f2;
+  --kk-social-apple:      #000000;
+  --kk-social-naver:      #19ce60;
+  --kk-social-wechat:     #18d271;
+  --kk-social-yahoo-jp:   #ff0033;
+
+  /* ---------- RADII ---------------------------------------------------- */
+  --kk-radius-xs: 2px;
+  --kk-radius-sm: 4px;
+  --kk-radius-md: 8px;   /* default for buttons, cards */
+  --kk-radius-lg: 12px;
+  --kk-radius-xl: 16px;
+
+  /* ---------- SPACING (cook scale, 2–48) ------------------------------- */
+  --kk-spacing-025: 2px;
+  --kk-spacing-050: 4px;
+  --kk-spacing-075: 6px;
+  --kk-spacing-100: 8px;
+  --kk-spacing-150: 12px;
+  --kk-spacing-200: 16px;
+  --kk-spacing-250: 20px;
+  --kk-spacing-300: 24px;
+  --kk-spacing-400: 32px;
+  --kk-spacing-500: 40px;
+  --kk-spacing-600: 48px;
+
+  /* ---------- ICON SIZES ----------------------------------------------- */
+  --kk-icon-2xs: 14px;
+  --kk-icon-xs:  16px;
+  --kk-icon-sm:  20px;
+  --kk-icon-md:  24px;
+  --kk-icon-lg:  32px;
+  --kk-icon-xl:  48px;
+
+  /* ---------- ELEVATION (three-tier system) ---------------------------- */
+  /* action: subtle press-response shadow for small interactive surfaces */
+  --kk-shadow-action: 0 1px 4px 0 rgba(38, 50, 56, 0.12);
+  /* fixed: static elevated panels — search bars, floating bars */
+  --kk-shadow-fixed:  0 2px 24px 0 rgba(38, 50, 56, 0.12);
+  /* raised: modals, bottom sheets, dropdowns */
+  --kk-shadow-raised: 0 8px 24px 0 rgba(37, 42, 49, 0.24);
+
+  /* ---------- ASPECT RATIOS -------------------------------------------- */
+  /* Used to constrain hero, card and thumbnail imagery across feed / PDP / list. */
+  --kk-aspect-3-1:   3 / 1;   /* horizontal banner */
+  --kk-aspect-16-9:  16 / 9;  /* hero card */
+  --kk-aspect-3-2:   3 / 2;   /* destination card */
+  --kk-aspect-4-3:   4 / 3;   /* product card */
+  --kk-aspect-1-1:   1 / 1;   /* category tile, avatar */
+  --kk-aspect-3-4:   3 / 4;   /* portrait product card */
+
+  /* ---------- OPACITY --------------------------------------------------- */
+  --kk-opacity-1: 0.1;
+  --kk-opacity-2: 0.2;
+  --kk-opacity-3: 0.3;
+  --kk-opacity-4: 0.4;   /* disabled elements */
+  --kk-opacity-5: 0.5;   /* loading */
+  --kk-opacity-6: 0.6;   /* semi-transparent overlay */
+  --kk-opacity-7: 0.7;
+  --kk-opacity-8: 0.8;
+  --kk-opacity-9: 0.9;
+
+  /* ---------- Page defaults -------------------------------------------- */
+  --kk-fg: var(--kk-text-darker);
+  --kk-fg-muted: var(--kk-text-dark);
+  --kk-fg-subtle: var(--kk-text-medium);
+  --kk-bg: var(--kk-color-white);
+  --kk-bg-surface: var(--kk-surface-lighter);
+}
+
+/* ==========================================================================
+   Semantic type classes
+   ========================================================================== */
+
+html, body {
+  font-family: var(--kk-font-family);
+  color: var(--kk-fg);
+  background: var(--kk-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+.kk-h4, h4.kk { font-size: var(--kk-h4-size); line-height: var(--kk-h4-lh); font-weight: var(--kk-h4-weight); color: var(--kk-text-darker); }
+.kk-h5, h5.kk { font-size: var(--kk-h5-size); line-height: var(--kk-h5-lh); font-weight: var(--kk-h5-weight); color: var(--kk-text-darker); }
+.kk-h6, h6.kk { font-size: var(--kk-h6-size); line-height: var(--kk-h6-lh); font-weight: var(--kk-h6-weight); color: var(--kk-text-darker); }
+
+.kk-subtitle-lg { font-size: var(--kk-subtitle-lg-size); line-height: var(--kk-subtitle-lg-lh); font-weight: var(--kk-subtitle-lg-weight); }
+.kk-subtitle-md { font-size: var(--kk-subtitle-md-size); line-height: var(--kk-subtitle-md-lh); font-weight: var(--kk-subtitle-md-weight); }
+.kk-subtitle-sm { font-size: var(--kk-subtitle-sm-size); line-height: var(--kk-subtitle-sm-lh); font-weight: var(--kk-subtitle-sm-weight); }
+
+.kk-body-lg { font-size: var(--kk-body-lg-size); line-height: var(--kk-body-lg-lh); font-weight: var(--kk-body-lg-weight); }
+.kk-body-md { font-size: var(--kk-body-md-size); line-height: var(--kk-body-md-lh); font-weight: var(--kk-body-md-weight); }
+.kk-body-sm { font-size: var(--kk-body-sm-size); line-height: var(--kk-body-sm-lh); font-weight: var(--kk-body-sm-weight); }
+.kk-category  { font-size: var(--kk-category-size); line-height: var(--kk-category-lh); font-weight: var(--kk-category-weight); color: var(--kk-text-medium); text-transform: uppercase; letter-spacing: 0.03em; }
+
+.kk-price-xxl { font-size: var(--kk-price-bold-xxl-size); line-height: var(--kk-price-bold-xxl-lh); font-weight: 700; color: var(--kk-highlight-darker); }
+.kk-price-xl  { font-size: var(--kk-price-bold-xl-size);  line-height: var(--kk-price-bold-xl-lh);  font-weight: 700; color: var(--kk-highlight-darker); }
+.kk-price-lg  { font-size: var(--kk-price-bold-lg-size);  line-height: var(--kk-price-bold-lg-lh);  font-weight: 700; color: var(--kk-highlight-darker); }
+.kk-price-md  { font-size: var(--kk-price-bold-md-size);  line-height: var(--kk-price-bold-md-lh);  font-weight: 700; color: var(--kk-highlight-darker); }

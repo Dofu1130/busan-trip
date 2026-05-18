@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8">
+<title>釜山行 · 7/28–8/5 行程規劃</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="src/colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: #e8eef3; font-family: "Noto Sans TC", -apple-system, system-ui; min-height: 100vh; }
+  .stage {
+    min-height: 100vh; padding: 32px 20px 80px;
+    display: flex; flex-direction: column; align-items: center; gap: 18px;
+    box-sizing: border-box;
+  }
+  .title-row {
+    text-align: center;
+    color: #2a3540;
+  }
+  .title-row .h {
+    font-size: 28px; font-weight: 900; letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #1ab6c1 0%, #03748a 60%, #c33a6e 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .title-row .s { font-size: 13px; color: #5a6a78; margin-top: 4px; }
+  .toolbar {
+    display: flex; gap: 6px; background: #fff;
+    padding: 6px; border-radius: 999px;
+    box-shadow: 0 4px 24px rgba(38,50,56,0.08);
+    flex-wrap: wrap; justify-content: center;
+  }
+  .toolbar button {
+    font: 600 12px "Noto Sans TC", system-ui;
+    background: transparent; border: 0;
+    padding: 8px 14px; border-radius: 999px;
+    cursor: pointer; color: #5a6a78; transition: all .15s ease;
+  }
+  .toolbar button:hover { background: #f1f4f8; }
+  .toolbar button.on { background: #1ab6c1; color: #fff; }
+
+  .phone-wrap { position: relative; }
+  .tabbar {
+    position: absolute; left: 16px; right: 16px; bottom: 26px;
+    background: #fff; border-radius: 16px;
+    box-shadow: 0 -2px 24px rgba(38,50,56,0.16), 0 8px 24px rgba(38,50,56,0.08);
+    display: flex; padding: 8px 4px 4px; z-index: 5;
+  }
+  .tab {
+    flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px;
+    padding: 6px 0; color: #9c9da0; font-size: 10px; font-weight: 500; cursor: pointer;
+  }
+  .tab.on { color: #1ab6c1; }
+  .scroll { height: 100%; overflow-y: auto; position: relative; -webkit-overflow-scrolling: touch; }
+
+  .hint {
+    color: #5a6a78; font-size: 12px; max-width: 380px; text-align: center; line-height: 18px;
+  }
+</style>
+</head>
+<body>
+
+<div class="stage">
+  <div class="title-row">
+    <div class="h">釜山行 · 부산</div>
+    <div class="s">7/28 (一) – 8/05 (二) · 9 天 8 夜 · 第一次去韓國的行程規劃</div>
+  </div>
+  <div class="toolbar" id="toolbar"></div>
+  <div id="app" class="phone-wrap"></div>
+  <div class="hint">
+    點底部 Tab 切換頁面 · 點上方按鈕可直接跳到任一畫面 · 入境清單可勾選
+  </div>
+</div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script src="src/data.js"></script>
+<script type="text/babel" src="src/ios-frame.jsx"></script>
+<script type="text/babel" src="src/primitives.jsx"></script>
+<script type="text/babel" src="src/screen-overview.jsx"></script>
+<script type="text/babel" src="src/screen-entry.jsx"></script>
+<script type="text/babel" src="src/screen-itinerary.jsx"></script>
+<script type="text/babel" src="src/screen-tips.jsx"></script>
+
+<script type="text/babel">
+function BusanTabBar({ active, onTab }) {
+  const items = [
+    { k: 'overview', l: '總覽', on: 'ic_home_fill', off: 'ic_home_line' },
+    { k: 'entry', l: '入境', on: 'ic_check_circle_fill', off: 'ic_check_circle_line' },
+    { k: 'itinerary', l: '行程', on: 'ic_calendar_fill', off: 'ic_calendar_line' },
+    { k: 'tips', l: '攻略', on: 'ic_info_fill', off: 'ic_info_line' },
+  ];
+  return (
+    <div className="tabbar">
+      {items.map(t => {
+        const isOn = active === t.k;
+        return (
+          <div key={t.k} className={'tab' + (isOn ? ' on' : '')} onClick={() => onTab(t.k)} data-screen-label={t.l}>
+            <Icon name={isOn ? t.on : t.off} size={22} color={isOn ? 'teal' : 'ink3'} />
+            <span>{t.l}</span>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+function App() {
+  const SCREENS = [
+    ['overview', '總覽'],
+    ['entry', '入境準備'],
+    ['itinerary', '逐日行程'],
+    ['day', 'Day 詳細'],
+    ['tips', '攻略'],
+  ];
+  const initial = (() => { try { return localStorage.getItem('bs_screen') || 'overview'; } catch { return 'overview'; } })();
+  const initialDay = (() => { try { return parseInt(localStorage.getItem('bs_day') || '1', 10); } catch { return 1; } })();
+
+  const [screen, setScreenRaw] = React.useState(initial);
+  const [dayN, setDayNRaw] = React.useState(initialDay);
+
+  const setScreen = (s) => {
+    setScreenRaw(s);
+    try { localStorage.setItem('bs_screen', s); } catch {}
+  };
+  const setDayN = (n) => {
+    setDayNRaw(n);
+    try { localStorage.setItem('bs_day', String(n)); } catch {}
+  };
+
+  const toolbar = document.getElementById('toolbar');
+  React.useEffect(() => {
+    if (!toolbar) return;
+    toolbar.innerHTML = '';
+    SCREENS.forEach(([k, l]) => {
+      const b = document.createElement('button');
+      b.textContent = l;
+      if (k === screen) b.className = 'on';
+      b.onclick = () => setScreen(k);
+      toolbar.appendChild(b);
+    });
+  }, [screen]);
+
+  let content;
+  let tab = screen;
+  let showTabBar = true;
+  if (screen === 'overview') {
+    content = <OverviewScreen
+      onOpenDay={(n) => { setDayN(n); setScreen('day'); }}
+      onOpenEntry={() => setScreen('entry')}
+      onOpenItinerary={() => setScreen('itinerary')}
+      onOpenTips={() => setScreen('tips')}
+    />;
+  } else if (screen === 'entry') {
+    content = <EntryScreen onBack={() => setScreen('overview')} />;
+  } else if (screen === 'itinerary') {
+    content = <ItineraryScreen
+      onBack={() => setScreen('overview')}
+      onOpenDay={(n) => { setDayN(n); setScreen('day'); }}
+    />;
+  } else if (screen === 'day') {
+    content = <DayDetailScreen
+      dayN={dayN}
+      onBack={() => setScreen('itinerary')}
+      onPrev={() => setDayN(Math.max(1, dayN - 1))}
+      onNext={() => setDayN(Math.min(DAYS.length, dayN + 1))}
+    />;
+    tab = 'itinerary';
+    showTabBar = false; // immersive day view
+  } else if (screen === 'tips') {
+    content = <TipsScreen onBack={() => setScreen('overview')} />;
+  }
+
+  return (
+    <IOSDevice width={390} height={820}>
+      <div className="scroll" data-screen-label={screen} style={{ paddingTop: 54 }}>
+        {content}
+      </div>
+      {showTabBar && <BusanTabBar active={tab} onTab={(t) => setScreen(t)} />}
+    </IOSDevice>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('app'));
+root.render(<App />);
+</script>
+
+</body>
+</html>
