@@ -7,70 +7,59 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="src/colors_and_type.css">
 <style>
-  html, body { margin: 0; padding: 0; background: #e8eef3; font-family: "Noto Sans TC", -apple-system, system-ui; min-height: 100vh; }
-  .stage {
-    min-height: 100vh; padding: 32px 20px 80px;
-    display: flex; flex-direction: column; align-items: center; gap: 18px;
-    box-sizing: border-box;
+  html, body {
+    margin: 0; padding: 0;
+    background: #e8eef3;
+    font-family: "Noto Sans TC", -apple-system, system-ui;
   }
-  .title-row {
-    text-align: center;
-    color: #2a3540;
+  body {
+    min-height: 100vh; min-height: 100dvh;
+    display: flex; justify-content: center;
   }
-  .title-row .h {
-    font-size: 28px; font-weight: 900; letter-spacing: -0.02em;
-    background: linear-gradient(135deg, #1ab6c1 0%, #03748a 60%, #c33a6e 100%);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-clip: text;
+  .phone-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 460px;
+    background: #f7fafc;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; min-height: 100dvh;
   }
-  .title-row .s { font-size: 13px; color: #5a6a78; margin-top: 4px; }
-  .toolbar {
-    display: flex; gap: 6px; background: #fff;
-    padding: 6px; border-radius: 999px;
-    box-shadow: 0 4px 24px rgba(38,50,56,0.08);
-    flex-wrap: wrap; justify-content: center;
+  .scroll {
+    flex: 1;
+    background: #f7fafc;
   }
-  .toolbar button {
-    font: 600 12px "Noto Sans TC", system-ui;
-    background: transparent; border: 0;
-    padding: 8px 14px; border-radius: 999px;
-    cursor: pointer; color: #5a6a78; transition: all .15s ease;
-  }
-  .toolbar button:hover { background: #f1f4f8; }
-  .toolbar button.on { background: #1ab6c1; color: #fff; }
-
-  .phone-wrap { position: relative; }
   .tabbar {
-    position: absolute; left: 16px; right: 16px; bottom: 26px;
-    background: #fff; border-radius: 16px;
-    box-shadow: 0 -2px 24px rgba(38,50,56,0.16), 0 8px 24px rgba(38,50,56,0.08);
-    display: flex; padding: 8px 4px 4px; z-index: 5;
+    position: sticky;
+    bottom: 0; left: 0; right: 0;
+    background: #fff;
+    box-shadow: 0 -2px 24px rgba(38,50,56,0.10);
+    border-top: 1px solid #eef1f4;
+    display: flex;
+    padding: 6px 4px max(8px, env(safe-area-inset-bottom));
+    z-index: 5;
   }
   .tab {
     flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px;
     padding: 6px 0; color: #9c9da0; font-size: 10px; font-weight: 500; cursor: pointer;
   }
   .tab.on { color: #1ab6c1; }
-  .scroll { height: 100%; overflow-y: auto; position: relative; -webkit-overflow-scrolling: touch; }
 
-  .hint {
-    color: #5a6a78; font-size: 12px; max-width: 380px; text-align: center; line-height: 18px;
+  /* Desktop: centered phone-card feel */
+  @media (min-width: 720px) {
+    body { padding: 24px 0; align-items: flex-start; }
+    .phone-wrap {
+      min-height: calc(100vh - 48px);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 30px 60px rgba(38,50,56,0.18), 0 0 0 1px rgba(38,50,56,0.06);
+    }
   }
 </style>
 </head>
 <body>
 
-<div class="stage">
-  <div class="title-row">
-    <div class="h">釜山行 · 부산</div>
-    <div class="s">7/28 (一) – 8/05 (二) · 9 天 8 夜 · 第一次去韓國的行程規劃</div>
-  </div>
-  <div class="toolbar" id="toolbar"></div>
-  <div id="app" class="phone-wrap"></div>
-  <div class="hint">
-    點底部 Tab 切換頁面 · 點上方按鈕可直接跳到任一畫面 · 入境清單可勾選
-  </div>
-</div>
+<div id="app"></div>
 
 <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
@@ -107,6 +96,25 @@ function BusanTabBar({ active, onTab }) {
   );
 }
 
+// ============== URL hash router ===============
+// #overview | #entry | #itinerary | #tips | #day/3
+// Any navigation goes through location.hash so the browser back button
+// (and mobile swipe-back gesture) returns to the previous screen.
+function parseHash() {
+  const raw = (window.location.hash || '#overview').slice(1);
+  const [screen, sub] = raw.split('/');
+  const dayN = sub ? Math.max(1, Math.min(DAYS.length, parseInt(sub, 10) || 1)) : 1;
+  const valid = ['overview', 'entry', 'itinerary', 'tips', 'day'];
+  return {
+    screen: valid.includes(screen) ? screen : 'overview',
+    dayN,
+  };
+}
+
+function hashFor(screen, dayN) {
+  return screen === 'day' ? `#day/${dayN}` : `#${screen}`;
+}
+
 function App() {
   const SCREENS = [
     ['overview', '總覽'],
@@ -115,71 +123,78 @@ function App() {
     ['day', 'Day 詳細'],
     ['tips', '攻略'],
   ];
-  const initial = (() => { try { return localStorage.getItem('bs_screen') || 'overview'; } catch { return 'overview'; } })();
-  const initialDay = (() => { try { return parseInt(localStorage.getItem('bs_day') || '1', 10); } catch { return 1; } })();
 
-  const [screen, setScreenRaw] = React.useState(initial);
-  const [dayN, setDayNRaw] = React.useState(initialDay);
+  const [{ screen, dayN }, setState] = React.useState(parseHash);
 
-  const setScreen = (s) => {
-    setScreenRaw(s);
-    try { localStorage.setItem('bs_screen', s); } catch {}
-  };
-  const setDayN = (n) => {
-    setDayNRaw(n);
-    try { localStorage.setItem('bs_day', String(n)); } catch {}
-  };
-
-  const toolbar = document.getElementById('toolbar');
+  // Listen for back/forward (browser back button, mobile swipe-back).
   React.useEffect(() => {
-    if (!toolbar) return;
-    toolbar.innerHTML = '';
-    SCREENS.forEach(([k, l]) => {
-      const b = document.createElement('button');
-      b.textContent = l;
-      if (k === screen) b.className = 'on';
-      b.onclick = () => setScreen(k);
-      toolbar.appendChild(b);
-    });
-  }, [screen]);
+    const onHash = () => setState(parseHash());
+    window.addEventListener('hashchange', onHash);
+    // make sure initial hash is set so first back stays in-app
+    if (!window.location.hash) {
+      history.replaceState(null, '', '#overview');
+    }
+    return () => window.removeEventListener('hashchange', onHash);
+  }, []);
+
+  // Navigate by pushing a new hash (creates a history entry).
+  const go = (nextScreen, nextDay = dayN) => {
+    const target = hashFor(nextScreen, nextDay);
+    if (window.location.hash === target) return;
+    window.location.hash = target;
+  };
+
+  // Back goes through browser history so users can chain back-back-back.
+  const back = () => {
+    if (window.history.length > 1) {
+      window.history.back();
+    } else {
+      go('overview');
+    }
+  };
+
+  const setScreen = go;
+  const setDayN = (n) => go('day', n);
+
+  // (top toolbar removed — navigation lives in the bottom tab bar)
 
   let content;
   let tab = screen;
   let showTabBar = true;
   if (screen === 'overview') {
     content = <OverviewScreen
-      onOpenDay={(n) => { setDayN(n); setScreen('day'); }}
+      onOpenDay={(n) => { setDayN(n); }}
       onOpenEntry={() => setScreen('entry')}
       onOpenItinerary={() => setScreen('itinerary')}
       onOpenTips={() => setScreen('tips')}
     />;
   } else if (screen === 'entry') {
-    content = <EntryScreen onBack={() => setScreen('overview')} />;
+    content = <EntryScreen onBack={back} />;
   } else if (screen === 'itinerary') {
     content = <ItineraryScreen
-      onBack={() => setScreen('overview')}
-      onOpenDay={(n) => { setDayN(n); setScreen('day'); }}
+      onBack={back}
+      onOpenDay={(n) => { setDayN(n); }}
     />;
   } else if (screen === 'day') {
     content = <DayDetailScreen
       dayN={dayN}
-      onBack={() => setScreen('itinerary')}
+      onBack={back}
       onPrev={() => setDayN(Math.max(1, dayN - 1))}
       onNext={() => setDayN(Math.min(DAYS.length, dayN + 1))}
     />;
     tab = 'itinerary';
     showTabBar = false; // immersive day view
   } else if (screen === 'tips') {
-    content = <TipsScreen onBack={() => setScreen('overview')} />;
+    content = <TipsScreen onBack={back} />;
   }
 
   return (
-    <IOSDevice width={390} height={820}>
-      <div className="scroll" data-screen-label={screen} style={{ paddingTop: 54 }}>
+    <div className="phone-wrap">
+      <div className="scroll" data-screen-label={screen}>
         {content}
       </div>
       {showTabBar && <BusanTabBar active={tab} onTab={(t) => setScreen(t)} />}
-    </IOSDevice>
+    </div>
   );
 }
 
