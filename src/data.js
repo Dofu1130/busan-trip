@@ -7,7 +7,7 @@ const TRIP = {
   endDate: '2026-08-04',
   cityFrom: 'TPE',
   cityTo: 'PUS',
-  travelers: 1,
+  travelers: 11,
 };
 
 const HOTELS = [
@@ -32,7 +32,7 @@ const HOTELS = [
     checkOut: '8/04 (二)',
     photo: 'yongdusan',
     tag: 'Airbnb',
-    nearest: '南浦站 (1號線) · 8 人房 · 透過 Airbnb 預訂',
+    nearest: '南浦站 (1號線) · 8 人房 · 其餘團員自行安排住宿',
     url: 'https://www.airbnb.com.tw/rooms/1507520587215809349?adults=8&check_in=2026-07-30&check_out=2026-08-04',
   },
 ];
@@ -109,7 +109,7 @@ const DAYS = [
     photo: 'gyeongju',
     summary: 'KTX 30分到慶州 → 佛國寺 → 石窟庵 → 大陵苑 → 瞻星台 → 東宮與月池夜景',
     stops: [
-      { t: '08:00', name: '釜山站 KTX 到新慶州', sub: '南浦走 1 號線 1 站 → 釜山站 · 單程 30 分 · 9 人連號要早訂', icon: 'ic_highspeed_rail_line', tag: '小旅行' },
+      { t: '08:00', name: '釜山站 KTX 到新慶州', sub: '南浦走 1 號線 1 站 → 釜山站 · 單程 30 分 · 11 人連號超早訂或考慮包小巴整日', icon: 'ic_highspeed_rail_line', tag: '小旅行' },
       { t: '09:30', name: '佛國寺', sub: 'UNESCO世界遺產 · 韓國最美寺廟', icon: 'ic_location_line', highlight: true },
       { t: '11:30', name: '石窟庵', sub: '山上佛龕 · 從佛國寺搭 12 號公車', icon: 'ic_location_line' },
       { t: '14:00', name: '皇理團路 + 大陵苑古墳群', sub: '韓屋咖啡街 · 走進千年古墓園', icon: 'ic_camera_line' },
@@ -126,9 +126,9 @@ const DAYS = [
     photo: 'yonggungsa',
     summary: '海東龍宮寺 → 機張市場螃蟹 → Lotte Premium Outlet → 回南浦',
     stops: [
-      { t: '09:30', name: '南浦 → 海雲台 → 東海線 OSIRIA', sub: '南浦走 1 號線到西面換 2 號線到海雲台 · 約 90 分 · 9 人建議考慮包車', icon: 'ic_train_line' },
+      { t: '09:30', name: '南浦 → 海雲台 → 東海線 OSIRIA', sub: '南浦走 1 號線到西面換 2 號線到海雲台 · 約 90 分 · 11 人強烈建議包 1 台 15 人座小巴一日遊', icon: 'ic_train_line' },
       { t: '11:00', name: '海東龍宮寺', sub: '韓國最美海邊寺廟 · 108階觀音祈福', icon: 'ic_location_line', highlight: true },
-      { t: '13:00', name: '機張市場帝王蟹午餐', sub: '9 人吃 2–3 隻 · 1kg 約 ₩90,000 · 要先訂位', icon: 'ic_utensils_line', tag: '貴' },
+      { t: '13:00', name: '機張市場帝王蟹午餐', sub: '11 人吃 3–4 隻 · 1kg 約 ₩90,000 · 11 人務必先訂位', icon: 'ic_utensils_line', tag: '貴' },
       { t: '15:00', name: 'Lotte Premium Outlet 東釜山店', sub: '免稅退稅一次搞定 · 設計類 outlet', icon: 'ic_store_fill' },
       { t: '18:30', name: 'Centum City Spa Land', sub: '韓式汗蒸幕 ₩20,000 · 4小時上限', icon: 'ic_haedongspa', highlight: true },
       { t: '21:00', name: '回南浦晚餐 · 部隊鍋', sub: '光復路 / BIFF 廣場周邊夜市攤', icon: 'ic_utensils_line' },
@@ -158,7 +158,7 @@ const DAYS = [
     photo: 'gimhae',
     summary: '清晨退房 → 機場接送 → 退稅 → KE2085 09:00 飛回台北',
     stops: [
-      { t: '05:30', name: '退房 · 9 人小巴到金海機場', sub: '南浦 → 機場約 45 分 · 9 人建議預約小巴 ₩90k–120k', icon: 'ic_inn_line', tag: '出發日' },
+      { t: '05:30', name: '退房 · 11 人小巴到金海機場', sub: '南浦 → 機場約 45 分 · 11 人需 1 台 15 人座 mini-bus · ₩120k–160k', icon: 'ic_inn_line', tag: '出發日' },
       { t: '06:30', name: '抵達金海機場 PUS', sub: '建議起飛前 2.5h 抵達 · 國際線航廈', icon: 'ic_airplane_fill' },
       { t: '07:00', name: '退稅 + 退 T-money 餘額', sub: 'CU/GS25 機台退稅 · T-money 到便利店退', icon: 'ic_coupon_color', tag: '別忘' },
       { t: '07:30', name: '機場早餐 + 候機', sub: '韓國最後一頓 · 紫菜飯捲 / 韓式三明治', icon: 'ic_utensils_line' },
