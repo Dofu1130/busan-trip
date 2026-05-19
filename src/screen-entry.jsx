@@ -1,17 +1,31 @@
 // Entry / 入境準備 — checklist + Gimhae airport transport guide
 
+const ENTRY_CHECK_KEY = 'busan-trip:entry-checklist';
+const ENTRY_CHECK_DEFAULT = {
+  keta: false, eCustoms: false, krw: false, sim: false,
+  naver: false, kakao: false, papago: false, tmoney: false,
+};
+
 function EntryScreen({ onBack }) {
-  const [checked, setChecked] = React.useState({
-    keta: false, eCustoms: false, krw: true, sim: false,
-    naver: false, kakao: false, papago: false, tmoney: false,
+  const [checked, setChecked] = React.useState(() => {
+    try {
+      const raw = window.localStorage.getItem(ENTRY_CHECK_KEY);
+      if (raw) return { ...ENTRY_CHECK_DEFAULT, ...JSON.parse(raw) };
+    } catch (e) {}
+    return ENTRY_CHECK_DEFAULT;
   });
+  React.useEffect(() => {
+    try {
+      window.localStorage.setItem(ENTRY_CHECK_KEY, JSON.stringify(checked));
+    } catch (e) {}
+  }, [checked]);
   const toggle = (k) => setChecked(s => ({ ...s, [k]: !s[k] }));
 
   const checklist = [
     { k: 'keta', t: 'K-ETA 電子旅行許可', sub: '台灣護照 2025–2026 暫時免申請，出發前到 k-eta.go.kr 再確認一次', tone: 'critical', icon: 'ic_warning_circle_fill', tag: '出發前 72h' },
     { k: 'eCustoms', t: '線上海關申報 e-CD', sub: '在 customs.go.kr 填表拿 QR，落地後快速通關', tone: 'info', icon: 'ic_check_circle_line', tag: '可選' },
     { k: 'krw', t: '韓元現金 ₩100,000 起跳', sub: '台幣兌韓元先換一半，現場 ATM 用 Visa 卡也行', tone: 'gold', icon: 'ic_coupon_color', tag: '建議' },
-    { k: 'sim', t: '上網 SIM / eSIM / WiFi 蛋', sub: '9 天約 NT$ 350–500，eSIM 落地直接開，免換卡', tone: 'teal', icon: 'ic_globe_fill' },
+    { k: 'sim', t: '上網 SIM / eSIM / WiFi 蛋', sub: '8 天約 NT$ 300–450，eSIM 落地直接開，免換卡', tone: 'teal', icon: 'ic_globe_fill' },
     { k: 'tmoney', t: 'T-money 交通卡', sub: '機場 / 便利店 ₩4,000 + 儲值，地鐵 公車 計程車 通用', tone: 'teal', icon: 'ic_train_line' },
     { k: 'naver', t: '下載 Naver Map', sub: 'Google Map 在韓國不準，Naver / Kakao Map 才是本地神器', tone: 'teal', icon: 'ic_map_fill' },
     { k: 'kakao', t: '下載 Kakao T', sub: '韓國的 Uber，計程車叫車 + 顯示金額不被繞路', tone: 'teal', icon: 'ic_car_line' },

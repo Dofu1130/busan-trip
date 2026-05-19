@@ -15,7 +15,7 @@ function ItineraryScreen({ onOpenDay, onBack }) {
             <Icon name="ic_arrow_left_line" size={22} />
           </div>
           <div style={{ flex: 1 }}>
-            <div style={{ fontSize: 11, color: KK.ink2, letterSpacing: '0.08em', fontWeight: 500 }}>釜山行 · 7/28 – 8/05</div>
+            <div style={{ fontSize: 11, color: KK.ink2, letterSpacing: '0.08em', fontWeight: 500 }}>釜山行 · 7/28 – 8/04</div>
             <div style={{ fontSize: 19, fontWeight: 900, color: KK.ink, letterSpacing: '-0.02em', marginTop: 1 }}>逐日行程</div>
           </div>
           <Icon name="ic_map_line" size={20} color="ink2" />
@@ -25,7 +25,7 @@ function ItineraryScreen({ onOpenDay, onBack }) {
 
       {/* Summary band */}
       <div style={{ display: 'flex', gap: 8, padding: '14px 16px 6px' }}>
-        <SummaryStat l="總天數" v="9" u="天" />
+        <SummaryStat l="總天數" v={String(DAYS.length)} u="天" />
         <SummaryStat l="景點數" v={String(DAYS.reduce((s, d) => s + d.stops.length, 0))} u="站" />
         <SummaryStat l="一日小旅行" v="1" u="次" />
         <SummaryStat l="飯店" v="2" u="家" />

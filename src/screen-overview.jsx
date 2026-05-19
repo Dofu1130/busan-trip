@@ -28,8 +28,8 @@ function OverviewScreen({ onOpenDay, onOpenEntry, onOpenItinerary, onOpenTips })
         }} />
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 18, position: 'relative' }}>
-          <div style={{ fontWeight: 900, fontSize: 20, letterSpacing: '-0.04em', lineHeight: 1 }}>
-            KK<span style={{ opacity: 0.85 }}>day</span> <span style={{ fontWeight: 500, opacity: 0.8 }}>· 我的旅程</span>
+          <div style={{ fontWeight: 700, fontSize: 13, letterSpacing: '0.12em', opacity: 0.9 }}>
+            我的旅程
           </div>
           <div style={{ flex: 1 }} />
           <Icon name="ic_bell_line" size={20} color="white" />
@@ -44,9 +44,9 @@ function OverviewScreen({ onOpenDay, onOpenEntry, onOpenItinerary, onOpenTips })
           <div style={{ fontSize: 13, marginTop: 8, opacity: 0.92, display: 'flex', alignItems: 'center', gap: 6 }}>
             <span>7/28 (一)</span>
             <Icon name="ic_arrow_right_line" size={12} color="white" style={{ opacity: 0.85 }} />
-            <span>8/05 (二)</span>
+            <span>8/04 (二)</span>
             <span style={{ opacity: 0.6 }}>·</span>
-            <span>9 天 8 夜 · 初訪韓國</span>
+            <span>8 天 7 夜 · 初訪韓國</span>
           </div>
 
           {/* countdown chips */}
@@ -68,7 +68,7 @@ function OverviewScreen({ onOpenDay, onOpenEntry, onOpenItinerary, onOpenTips })
             }}>
               <div style={{ fontSize: 10, opacity: 0.85, letterSpacing: '0.05em' }}>FLIGHT</div>
               <div style={{ fontSize: 14, fontWeight: 700, lineHeight: 1, marginTop: 4 }}>TPE → PUS</div>
-              <div style={{ fontSize: 10, opacity: 0.85, marginTop: 2 }}>BX 717 · 13:10</div>
+              <div style={{ fontSize: 10, opacity: 0.85, marginTop: 2 }}>KE2086 · 12:00</div>
             </div>
             <div style={{
               background: 'rgba(255,255,255,0.16)',
@@ -87,7 +87,7 @@ function OverviewScreen({ onOpenDay, onOpenEntry, onOpenItinerary, onOpenTips })
       <div style={{ margin: '-12px 12px 0', background: '#fff', borderRadius: 12, padding: '14px 8px', display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 4, boxShadow: '0 2px 24px rgba(38,50,56,0.12)' }}>
         {[
           { i: 'ic_check_circle_line', l: '入境準備', c: 'teal', sub: '6 件', onClick: onOpenEntry },
-          { i: 'ic_calendar_line', l: '逐日行程', c: 'teal', sub: '9 天', onClick: onOpenItinerary },
+          { i: 'ic_calendar_line', l: '逐日行程', c: 'teal', sub: '8 天', onClick: onOpenItinerary },
           { i: 'ic_utensils_line', l: '必吃美食', c: 'teal', sub: '12 樣', onClick: onOpenTips },
           { i: 'ic_train_line', l: '交通攻略', c: 'teal', sub: '看圖', onClick: onOpenTips },
         ].map(a => (
@@ -111,11 +111,18 @@ function OverviewScreen({ onOpenDay, onOpenEntry, onOpenItinerary, onOpenTips })
       </div>
       <div style={{ padding: '0 16px', display: 'flex', flexDirection: 'column', gap: 10 }}>
         {HOTELS.map((h, i) => (
-          <div key={h.id} style={{
-            background: '#fff', borderRadius: 8, overflow: 'hidden',
-            boxShadow: '0 1px 4px rgba(38,50,56,0.12)',
-            display: 'flex', minHeight: 96,
-          }}>
+          <a
+            key={h.id}
+            href={h.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              background: '#fff', borderRadius: 8, overflow: 'hidden',
+              boxShadow: '0 1px 4px rgba(38,50,56,0.12)',
+              display: 'flex', minHeight: 96,
+              textDecoration: 'none', color: 'inherit',
+            }}
+          >
             <div style={{ width: 96, flexShrink: 0, position: 'relative' }}>
               <Photo kind={h.photo} aspect="auto" style={{ height: '100%' }}>
                 <div style={{ position: 'absolute', top: 6, left: 6, background: 'rgba(0,0,0,0.55)', color: '#fff', fontSize: 10, fontWeight: 700, padding: '3px 6px', borderRadius: 2 }}>STAY {i + 1}</div>
@@ -123,17 +130,20 @@ function OverviewScreen({ onOpenDay, onOpenEntry, onOpenItinerary, onOpenTips })
             </div>
             <div style={{ flex: 1, padding: '10px 12px', display: 'flex', flexDirection: 'column' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 6 }}>
-                <div style={{ fontSize: 14, fontWeight: 700, color: KK.ink }}>{h.area}</div>
+                <div style={{ fontSize: 14, fontWeight: 700, color: KK.ink }}>{h.name}</div>
                 <Badge tone="teal">{h.tag}</Badge>
               </div>
               <div style={{ fontSize: 12, color: KK.ink2, marginTop: 3, lineHeight: '17px' }}>{h.nearest}</div>
               <div style={{ flex: 1 }} />
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 6, fontSize: 12 }}>
                 <span style={{ color: KK.ink2 }}>{h.checkIn} <span style={{ opacity: 0.5 }}>→</span> {h.checkOut}</span>
-                <span style={{ color: KK.ink, fontWeight: 700 }}>{h.nights} 晚</span>
+                <span style={{ color: KK.ink, fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+                  {h.nights} 晚
+                  <Icon name="ic_arrow_right_line" size={12} color="ink2" />
+                </span>
               </div>
             </div>
-          </div>
+          </a>
         ))}
       </div>
 
