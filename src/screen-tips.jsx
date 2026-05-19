@@ -111,6 +111,26 @@ function FoodTab() {
 // =================================================================== PHRASES
 
 function PhrasesTab() {
+  const [speakingKey, setSpeakingKey] = React.useState(null);
+
+  const speakKorean = (text, key) => {
+    if (typeof window === 'undefined' || !window.speechSynthesis) {
+      alert('此瀏覽器不支援語音合成 · 請改用 Chrome / Safari');
+      return;
+    }
+    // Cancel anything currently speaking before starting new utterance
+    window.speechSynthesis.cancel();
+    // Use only the first form when phrase has "A / B" alternates
+    const spoken = text.split('/')[0].trim();
+    const u = new SpeechSynthesisUtterance(spoken);
+    u.lang = 'ko-KR';
+    u.rate = 0.85;
+    u.onend = () => setSpeakingKey(null);
+    u.onerror = () => setSpeakingKey(null);
+    setSpeakingKey(key);
+    window.speechSynthesis.speak(u);
+  };
+
   const groups = [
     {
       group: '基本招呼',
@@ -159,7 +179,7 @@ function PhrasesTab() {
       }}>
         <Icon name="ic_info_fill" size={18} color="ink2" style={{ filter: 'brightness(0) saturate(100%) invert(38%) sepia(95%) saturate(1800%) hue-rotate(190deg) brightness(95%) contrast(95%)' }} />
         <div style={{ fontSize: 12, color: '#1565c0', fontWeight: 500, lineHeight: '17px' }}>
-          韓國年輕店員大多會聽簡單英文，但會講中文的不多。<strong>Papago app</strong> 拍菜單瞬間翻譯，比說韓文穩
+          點右側 <strong>耳機圖示</strong> 用手機系統語音念出韓文。會話卡關時 <strong>Papago app</strong> 拍菜單翻譯最穩
         </div>
       </div>
 
@@ -178,13 +198,19 @@ function PhrasesTab() {
                   <div style={{ fontSize: 11, color: KK.ink2, marginTop: 3, fontStyle: 'italic' }}>{romaji}</div>
                   <div style={{ fontSize: 12, color: KK.tealDarker, marginTop: 3 }}>{zh}</div>
                 </div>
-                <div style={{
-                  width: 32, height: 32, borderRadius: 999,
-                  background: KK.tealLightBg,
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                }}>
-                  <Icon name="ic_headset_line" size={16} color="teal" />
-                </div>
+                <button
+                  onClick={() => speakKorean(ko, ko)}
+                  aria-label={`播放韓語：${ko}`}
+                  style={{
+                    width: 36, height: 36, borderRadius: 999,
+                    background: speakingKey === ko ? KK.teal : KK.tealLightBg,
+                    border: 'none', padding: 0, cursor: 'pointer',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    transition: 'background .15s ease',
+                  }}
+                >
+                  <Icon name="ic_headset_line" size={18} color={speakingKey === ko ? 'white' : 'teal'} />
+                </button>
               </div>
             ))}
           </div>
