@@ -301,21 +301,6 @@ function TransportTab() {
           ))}
         </div>
       </div>
-
-      {/* Card 4: KTX */}
-      <div style={{ background: '#fff', borderRadius: 8, padding: 14 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <Icon name="ic_highspeed_rail_line" size={28} color="teal" />
-          <div style={{ flex: 1 }}>
-            <div style={{ fontSize: 14, fontWeight: 700, color: KK.ink }}>慶州一日 KTX</div>
-            <div style={{ fontSize: 11, color: KK.ink2, marginTop: 2 }}>釜山站 → 新慶州 30 分鐘 · ₩11,000</div>
-          </div>
-        </div>
-        <div style={{ marginTop: 10, fontSize: 12, color: KK.ink2, lineHeight: '18px' }}>
-          建議用 <strong>Korail</strong> app 提前 1 週訂位 · 夏天慶州熱門時段會滿座<br/>
-          新慶州站到佛國寺要搭 700 號公車約 30 分
-        </div>
-      </div>
     </div>
   );
 }

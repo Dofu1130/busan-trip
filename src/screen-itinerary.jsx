@@ -27,7 +27,7 @@ function ItineraryScreen({ onOpenDay, onBack }) {
       <div style={{ display: 'flex', gap: 8, padding: '14px 16px 6px' }}>
         <SummaryStat l="總天數" v={String(DAYS.length)} u="天" />
         <SummaryStat l="景點數" v={String(DAYS.reduce((s, d) => s + d.stops.length, 0))} u="站" />
-        <SummaryStat l="一日小旅行" v="1" u="次" />
+        <SummaryStat l="換飯店" v={String(DAYS.filter(d => d.kind === 'transfer').length)} u="次" />
         <SummaryStat l="飯店" v="2" u="家" />
       </div>
 
