@@ -111,7 +111,7 @@ const DAYS = [
       { t: '13:00', name: '札嘎其市場', sub: '海鮮市場 2F 現點現吃 · 看活海鮮', icon: 'ic_utensils_line' },
       { t: '15:30', name: 'BIFF 廣場 · 國際市場', sub: 'BIFF 黑糖餅必吃 · 國際市場挖寶', icon: 'ic_store_fill' },
       { t: '18:00', name: '龍頭山公園 · 釜山塔', sub: '登塔看 360 度夜景 · 走回 Tripmade Annex', icon: 'ic_sparkles_fill', highlight: true },
-      { t: '20:00', name: '光復路晚餐', sub: '南浦光復路餐廳成排', icon: 'ic_utensils_line' },
+      { t: '20:00', name: '韓式炸雞晚餐', sub: '橋村 BHC / 60 雞任選 · 配啤酒看球賽 · 光復路即達', icon: 'ic_utensils_line' },
     ],
   },
   {
@@ -136,13 +136,13 @@ const DAYS = [
     base: '南浦',
     weather: '☀ 30° / 24°',
     photo: 'yongdusan',
-    summary: '影島 Momos Coffee 悠閒早晨 → 樂天超市南浦店伴手禮大採買 + 退稅 → 韓式炸雞晚餐',
+    summary: '影島 Momos Coffee 悠閒早晨 → 樂天超市南浦店伴手禮大採買 + 退稅 → 韓牛 BBQ 收官晚餐',
     stops: [
       { t: '10:00', name: '影島 Momos Coffee', sub: '世界咖啡師大賽冠軍店 · 享受悠閒早晨', icon: 'ic_camera_line', highlight: true, tag: '冠軍咖啡' },
       { t: '13:00', name: '南浦午餐', sub: '光復路 / 國際市場周邊', icon: 'ic_utensils_line' },
       { t: '14:30', name: '樂天超市 南浦店', sub: '11 人最後伴手禮大採買 · 現場辦理退稅', icon: 'ic_store_fill', highlight: true, tag: '退稅' },
-      { t: '18:30', name: '韓式炸雞晚餐', sub: '橋村 BHC / 60 雞任選 · 配啤酒看球賽', icon: 'ic_utensils_line', highlight: true },
-      { t: '21:00', name: '回 Tripmade Annex 收行李', sub: '提前打包 · 預訂明早機場接送', icon: 'ic_inn_line' },
+      { t: '18:30', name: '韓牛 BBQ 收官晚餐', sub: '西面 우대포 / 海雲台 수암한우 等專門店 · 11 人務必先訂包廂', icon: 'ic_utensils_line', highlight: true, tag: '必吃' },
+      { t: '21:30', name: '回 Tripmade Annex 收行李', sub: '提前打包 · 預訂明早機場接送', icon: 'ic_inn_line' },
     ],
   },
   {
