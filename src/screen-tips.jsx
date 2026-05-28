@@ -64,7 +64,9 @@ function FoodTab() {
     { k: 'sundae', ko: '순대국밥', cn: '米腸湯飯', loc: '西面 · 田浦', price: '₩9,000', emoji: '🥘', desc: '韓國血腸 + 內臟泡湯，下酒一絕', tag: '挑食慎', tone: 'gold' },
     { k: 'samgye', ko: '삼계탕', cn: '蔘雞湯', loc: '海雲台 · 西面', price: '₩16,000', emoji: '🍗', desc: '夏天三伏天就吃這個，整隻雞燉糯米人蔘', tag: '夏天必', tone: 'teal' },
     { k: 'bbq',   ko: '삼겹살', cn: '韓式烤五花', loc: '西面 · 田浦', price: '₩14,000/人', emoji: '🥩', desc: '韓國最日常的聚餐，五花包生菜佐烤泡菜', tag: '聚餐', tone: 'teal' },
-    { k: 'hanwoo', ko: '한우', cn: '韓牛 BBQ', loc: '西面 · 海雲台', price: '₩50,000/人起', emoji: '🥓', desc: '釜山行收官必吃 · 油花細緻入口即化，우대포 / 수암한우 知名', tag: '一定要吃', tone: 'critical' },
+    // map: 選填 — 貼上 Naver Map 地點分享連結 (https://naver.me/xxxx) 或搜尋連結，有填才會出現 Naver Map 按鈕
+    { k: 'hanwoo', ko: '한우', cn: '韓牛 BBQ', loc: '西面 · 海雲台', price: '₩50,000/人起', emoji: '🥓', desc: '釜山行收官必吃 · 油花細緻入口即化，우대포 / 수암한우 知名', tag: '一定要吃', tone: 'critical', map: 'https://map.naver.com/p/search/우대포' },
+    { k: 'kaymak', ko: '카이막 토스트', cn: 'Kaymak 蜂蜜奶油法棍', loc: '青沙浦 · 田浦 DIART', price: '₩8,000', emoji: '🥖', desc: 'DIART COFFEE 招牌 · 烤法棍夾土耳其凝脂奶油 + 蜂蜜，被封人生麵包，青沙浦本店海景超美但要排', tag: '人生麵包', tone: 'critical', map: 'https://map.naver.com/p/search/디아트커피' },
     { k: 'ssiat', ko: '씨앗호떡', cn: '種子糖餅', loc: 'BIFF廣場', price: '₩2,000', emoji: '🥞', desc: '南浦洞 BIFF 名物，現煎熱餅塞滿堅果黑糖', tag: 'BIFF', tone: 'gold' },
     { k: 'cafe',  ko: '카페', cn: '田浦咖啡', loc: '田浦', price: '₩6,000', emoji: '☕', desc: 'CNN 票選亞洲必去咖啡街，工業風韓系老店成排', tag: 'IG打卡', tone: 'info' },
     { k: 'fish',  ko: '회', cn: '生魚片', loc: '札嘎其 · 機張', price: '₩40,000/盤', emoji: '🐟', desc: '札嘎其市場一樓選魚，二樓店家現切現吃，自帶醬料區', tag: '海港', tone: 'info' },
@@ -102,6 +104,22 @@ function FoodTab() {
               <Badge tone={f.tone}>{f.tag}</Badge>
               <span style={{ fontSize: 12, fontWeight: 700, color: KK.price }}>{f.price}</span>
             </div>
+            {f.map && (
+              <a
+                href={f.map}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 4,
+                  marginTop: 8, padding: '6px 0', borderRadius: 6,
+                  background: '#03c75a', color: '#fff', textDecoration: 'none',
+                  fontSize: 12, fontWeight: 700,
+                }}
+              >
+                <Icon name="ic_location_line" size={13} color="white" />
+                Naver Map
+              </a>
+            )}
           </div>
         ))}
       </div>

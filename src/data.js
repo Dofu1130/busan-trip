@@ -59,10 +59,10 @@ const DAYS = [
     base: '海雲台',
     weather: '☀ 30° / 25°',
     photo: 'cheongsapo',
-    summary: 'Sky Capsule 尾浦→青沙浦 → 青沙浦海景咖啡 → BUSAN X the SKY 100樓 → 釜山愛麗斯遊艇看廣安大橋夜景',
+    summary: 'Sky Capsule 尾浦→青沙浦 → DIART 蜂蜜奶油法棍 → BUSAN X the SKY 100樓 → 釜山愛麗斯遊艇看廣安大橋夜景',
     stops: [
       { t: '09:00', name: '海雲台藍線公園 Sky Capsule', sub: '尾浦站搭天空膠囊火車前往青沙浦 · 需提前預訂', icon: 'ic_train_line', highlight: true, tag: '需預訂' },
-      { t: '11:30', name: '青沙浦海景咖啡廳', sub: '靠海窗景小憩 · 紅白燈塔順遊', icon: 'ic_camera_line' },
+      { t: '11:30', name: '青沙浦 DIART COFFEE', sub: '人生土耳其 Kaymak 蜂蜜奶油法棍 · 海景紅磚店二樓看海 · 不接受預約現場抽號，招牌常中午前售完，早點到', icon: 'ic_camera_line', highlight: true, tag: '會排隊' },
       { t: '14:00', name: 'BUSAN X the SKY 100 樓', sub: '俯瞰海雲台全景 · 順訪全球最高星巴克', icon: 'ic_location_line', highlight: true },
       { t: '17:00', name: '回飯店休整 · 早晚餐', sub: '海雲台市場周邊用餐', icon: 'ic_utensils_line' },
       { t: '19:30', name: '釜山愛麗斯遊艇', sub: '海上觀賞廣安大橋夜景 · 建議預訂 11 人包船時段', icon: 'ic_sparkles_fill', highlight: true, tag: '需預訂' },
