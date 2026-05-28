@@ -63,7 +63,7 @@ function FoodTab() {
     { k: 'crab',  ko: '대게', cn: '帝王蟹/雪蟹', loc: '機張 · 札嘎其', price: '₩90,000起', emoji: '🦀', desc: '8 月正值產季，機張市場一條街都在賣', tag: '貴但值', tone: 'critical' },
     { k: 'sundae', ko: '순대국밥', cn: '米腸湯飯', loc: '西面 · 田浦', price: '₩9,000', emoji: '🥘', desc: '韓國血腸 + 內臟泡湯，下酒一絕', tag: '挑食慎', tone: 'gold' },
     { k: 'samgye', ko: '삼계탕', cn: '蔘雞湯', loc: '海雲台 · 西面', price: '₩16,000', emoji: '🍗', desc: '夏天三伏天就吃這個，整隻雞燉糯米人蔘', tag: '夏天必', tone: 'teal' },
-    { k: 'bbq',   ko: '삼겹살', cn: '韓式烤五花', loc: '西面 · 田浦', price: '₩14,000/人', emoji: '🥩', desc: '韓國最日常的聚餐，五花包生菜佐烤泡菜', tag: '聚餐', tone: 'teal' },
+    { k: 'bbq',   ko: '삼겹살', cn: '韓式烤五花', loc: '西面 雪夜覓', price: '₩13,000/份', emoji: '🥩', desc: '西面雪夜覓藍帶認證、專人代烤 · 特목살 / 갈매기살 / 厚切五花，平日 16:00 開', tag: '藍帶', tone: 'teal', map: 'https://map.naver.com/p/search/설야멱' },
     // map: 選填 — 貼上 Naver Map 地點分享連結 (https://naver.me/xxxx) 或搜尋連結，有填才會出現 Naver Map 按鈕
     { k: 'hanwoo', ko: '한우', cn: '韓牛 BBQ', loc: '西面 · 海雲台', price: '₩50,000/人起', emoji: '🥓', desc: '釜山行收官必吃 · 油花細緻入口即化，우대포 / 수암한우 知名', tag: '一定要吃', tone: 'critical', map: 'https://map.naver.com/p/search/우대포' },
     { k: 'kaymak', ko: '카이막 토스트', cn: 'Kaymak 蜂蜜奶油法棍', loc: '青沙浦 · 田浦 DIART', price: '₩8,000', emoji: '🥖', desc: 'DIART COFFEE 招牌 · 烤法棍夾土耳其凝脂奶油 + 蜂蜜，被封人生麵包，青沙浦本店海景超美但要排', tag: '人生麵包', tone: 'critical', map: 'https://map.naver.com/p/search/디아트커피' },
