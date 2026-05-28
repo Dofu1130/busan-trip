@@ -67,6 +67,8 @@ function FoodTab() {
     // map: 選填 — 貼上 Naver Map 地點分享連結 (https://naver.me/xxxx) 或搜尋連結，有填才會出現 Naver Map 按鈕
     { k: 'hanwoo', ko: '한우', cn: '韓牛 BBQ', loc: '西面 · 海雲台', price: '₩50,000/人起', emoji: '🥓', desc: '釜山行收官必吃 · 油花細緻入口即化，우대포 / 수암한우 知名', tag: '一定要吃', tone: 'critical', map: 'https://map.naver.com/p/search/우대포' },
     { k: 'kaymak', ko: '카이막 토스트', cn: 'Kaymak 蜂蜜奶油法棍', loc: '青沙浦 · 田浦 DIART', price: '₩8,000', emoji: '🥖', desc: 'DIART COFFEE 招牌 · 烤法棍夾土耳其凝脂奶油 + 蜂蜜，被封人生麵包，青沙浦本店海景超美但要排', tag: '人生麵包', tone: 'critical', map: 'https://map.naver.com/p/search/디아트커피' },
+    { k: 'gejang', ko: '간장게장', cn: '醬油醃蟹', loc: '海雲台 미포집', price: '₩40,000/人起', emoji: '🦀', desc: '白飯小偷 · 生醃醬蟹 + 8 種醃海鮮套餐，尾浦집 40 年祕方醬油、生蛋黃魚籽醬是靈魂', tag: '白飯小偷', tone: 'critical', map: 'https://map.naver.com/p/search/미포집해운대본점' },
+    { k: 'gopchang', ko: '곱창', cn: '炭烤牛腸', loc: '廣安里 成元亭', price: '₩16,000/份', emoji: '🔥', desc: '곱창 / 막창炭火代烤，外皮焦脆油脂爆汁 · 成元亭有中文菜單、專人代烤，記得別穿白衣', tag: '代烤', tone: 'gold', map: 'https://map.naver.com/p/search/성원정양대창' },
     { k: 'ssiat', ko: '씨앗호떡', cn: '種子糖餅', loc: 'BIFF廣場', price: '₩2,000', emoji: '🥞', desc: '南浦洞 BIFF 名物，現煎熱餅塞滿堅果黑糖', tag: 'BIFF', tone: 'gold' },
     { k: 'cafe',  ko: '카페', cn: '田浦咖啡', loc: '田浦', price: '₩6,000', emoji: '☕', desc: 'CNN 票選亞洲必去咖啡街，工業風韓系老店成排', tag: 'IG打卡', tone: 'info' },
     { k: 'fish',  ko: '회', cn: '生魚片', loc: '札嘎其 · 機張', price: '₩40,000/盤', emoji: '🐟', desc: '札嘎其市場一樓選魚，二樓店家現切現吃，自帶醬料區', tag: '海港', tone: 'info' },

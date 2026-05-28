@@ -88,7 +88,7 @@ function OverviewScreen({ onOpenDay, onOpenEntry, onOpenItinerary, onOpenTips })
         {[
           { i: 'ic_check_circle_line', l: '入境準備', c: 'teal', sub: '6 件', onClick: onOpenEntry },
           { i: 'ic_calendar_line', l: '逐日行程', c: 'teal', sub: '8 天', onClick: onOpenItinerary },
-          { i: 'ic_utensils_line', l: '必吃美食', c: 'teal', sub: '14 樣', onClick: onOpenTips },
+          { i: 'ic_utensils_line', l: '必吃美食', c: 'teal', sub: '16 樣', onClick: onOpenTips },
           { i: 'ic_train_line', l: '交通攻略', c: 'teal', sub: '看圖', onClick: onOpenTips },
         ].map(a => (
           <div key={a.l} onClick={a.onClick} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, padding: '6px 4px', cursor: 'pointer' }}>
